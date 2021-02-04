@@ -54,7 +54,6 @@ class item{
 
         if(item.classList[0] === "editButton"){
             const itemBox =item.parentElement;
-            //itemBox2.children[1].disabled = !itemBox2.children[1].disabled;
             this.editlocaltodo(itemBox);
             //location.reload();
 
