@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>TODO_LIST</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  </head>
+
+  <body>
+    <div class="container-fluid fixed-top">
+      <nav>
+        <h1><span>TODO LIST</span></h1>
+      </nav>
+      <form>
+        <input class="input" type="text" placeholder="Enter list element ......"/>
+        <button class="addbutton"><i class="fa fa-plus"></i></button>
+        <div class="select">
+          <select name="todos" class="filter-item">
+            <option value="all">All</option>
+            <option value="complated">Complated</option>
+            <option value="uncomplated">Uncomplated</option>
+          </select>
+          <button class="deleteall"><i class="fa fa-trash"></i> DeleteAll</button>
+        </div>
+        <div class="selectcheck">
+          <input type="checkbox" class="ckcheck" id="ckck" value="Select All"/>
+          <select name="todos" class="check-item">
+            <option value="">Select-One</option>
+            <option class="deletecheck" id="delbut">Delete</option>
+            <option class="comcheck" id="combut">Completed</option>
+            <option class="uncomcheck" id="uncombut">Uncomplated</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="container"><ul class="todo-list"></ul></div>
+    <script src="app.js"></script>
+  </body>
+</html>
