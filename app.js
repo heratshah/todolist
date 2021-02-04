@@ -55,7 +55,7 @@ class item{
         if(item.classList[0] === "editButton"){
             const itemBox =item.parentElement;
             this.editlocaltodo(itemBox);
-            //location.reload();
+            location.reload();
 
         }
     }
