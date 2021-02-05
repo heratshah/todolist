@@ -7,7 +7,6 @@ h1{
 
 .container-fluid{
     background-color: rgb(228, 118, 78);
-    padding-bottom: 1%;
 }
 .addbutton{
     font-size: 30px;
@@ -85,15 +84,35 @@ select:hover{
     color: rgb(228, 118, 78);
 }
 
-.editButton,.deleteButton,.comButton{
-    margin-left: 2%;
-    width: 10%;
+.comButton{
+    margin-left: 30%;
+    width: 4%;
     border: none;
-    background-color: rgb(87, 184, 216);
-    color: white;
-    font-size: 30px;
+    background-color: white;
+    color: green;
+    font-size: 20px;
     border-radius: 10px;
 }
+.editButton{
+  
+    width: 4%;
+    border: none;
+    background-color: white;
+    color: blue;
+    font-size: 20px;
+    border-radius: 10px;
+}
+.deleteButton{
+    
+    width: 4%;
+    border: none;
+    color: red;
+    background-color: white;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+
 .checkboxButton{
     width: 10%;
     height: 20px;
@@ -101,17 +120,17 @@ select:hover{
 }
 
 .editButton:hover{
-    background-color: white;
-    color: blue;
+    background-color: blue;
+    color: white;
 }
 
 .deleteButton:hover{
-    color: red;
-    background-color: white;
+    color: white;
+    background-color: red;
 }
 .comButton:hover{
-    background-color: white;
-    color: green;
+    background-color: green;
+    color: white;
 }
 
 form input,
@@ -123,16 +142,11 @@ form button{
 .item{
     margin-top: 2%;
     text-align: center;
-    margin-left: 5%;
-    margin-right: 20%;
+    margin-right: 5%;
     transition: all 1s ease;
     display: flex;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
-}
-.item:hover{
-    background-color:rgb(87, 184, 216);
-    border-radius: 20px;
 }
 .complated{
     text-decoration: line-through;
