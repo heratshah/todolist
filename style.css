@@ -6,6 +6,7 @@ h1{
 }
 
 .container-fluid{
+    background-color: rgb(228, 118, 78);
     padding-bottom: 1%;
 }
 .addbutton{
