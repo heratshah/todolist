@@ -174,7 +174,7 @@ class item{
             comButton.addEventListener('click', ()=> this.complate(comButton));
             editButton.addEventListener('click', ()=> this.edit(editButton));
             deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
-            filterOption.addEventListener('click',()=> this.filtertodo(event));
+            filterOption.addEventListener('change',()=> this.filtertodo(event));
             deleteall.addEventListener('click',()=> this.deleteAll());
             checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));
             
