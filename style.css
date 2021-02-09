@@ -4,7 +4,7 @@ h1{
     font-family: serif;
 }
 
-.addbutton{
+.add-button{
     font-size: 30px;
     width: 8%;
     border-radius: 1%;
@@ -13,14 +13,14 @@ h1{
     border: none;
 }
 
-.addbutton:hover{
+.add-button:hover{
     background-color:white;
     color: #343a40;
     border-radius: 10cm;
     border: none;
 }
 
-.deleteall{
+.select__deleteall{
     font-size: 20px;
     border-radius: 20cm;
     border: none;
@@ -30,24 +30,24 @@ h1{
     margin-left: 5%;
 }
 
-.deleteall:hover{
+.select__deleteall:hover{
     background-color: white;
     color:#343a40;
     border-radius: 10cm;
     border: none;
 }
 
-.ckcheck{
+.select-check__input{
     width: 9%;
     height: 20px;
     margin-top: 1%;
 }
 
-.check-item{
+.selectcheck__item{
     margin-left: 10%;
     text-align: center;
 }
-.selectcheck{
+.select-check{
     margin-left: 15%;
 }
 .input{
