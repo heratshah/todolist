@@ -17,22 +17,22 @@
       </nav>
       <form>
         <input class="input" type="text" placeholder="Enter list element ......"/>
-        <button class="addbutton"><i class="fa fa-plus"></i></button>
+        <button class="add-button"><i class="fa fa-plus"></i></button>
         <div class="select">
-          <select name="todos" class="filter-item">
+          <select name="todos" class="select__item">
             <option value="all">All</option>
             <option value="complated">Complated</option>
             <option value="uncomplated">Uncomplated</option>
           </select>
-          <button class="deleteall"><i class="fa fa-trash"></i> DeleteAll</button>
+          <button class="select__deleteall"><i class="fa fa-trash"></i>DeleteAll</button>
         </div><br>
-        <div class="selectcheck">
-          <input type="checkbox" class="ckcheck" id="ckck" value="Select All"/>
-          <select name="todos" class="check-item">
+        <div class="select-check">
+          <input type="checkbox" class="select-check__input" id="input-checkbox" value="Select All"/>
+          <select name="todos" class="select-check__item">
             <option value="">Select-One</option>
-            <option class="deletecheck" id="delbut">Delete</option>
-            <option class="comcheck" id="combut">Completed</option>
-            <option class="uncomcheck" id="uncombut">Uncomplated</option>
+            <option value="delete">Delete</option>
+            <option value="completed">Completed</option>
+            <option value="uncomplated">Uncomplated</option>
           </select>
         </div>
       </form>
