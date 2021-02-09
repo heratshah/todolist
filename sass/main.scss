@@ -5,6 +5,11 @@
 }
 
 $bg-color:#343a40;
+@mixin first{
+    border: none;
+    font-size: 20px;
+    border-radius: 10px;
+}
 
 h1{
     text-align: center;
@@ -12,25 +17,19 @@ h1{
     font-family: serif;
 }
 .add-button{
-    font-size: 30px;
     width: 8%;
-    border-radius: 1%;
     background-color: $bg-color;
     color: white;
-    border: none;
+    @include first;
     &:hover{
         background-color:white;
         color: $bg-color;
-        border-radius: 10cm;
-        border: none;
     }
 }
 
 
 .select__deleteall{
-    font-size: 20px;
-    border-radius: 20cm;
-    border: none;
+    @include first;
     background-color: $bg-color;
     color: white;
     width: 10%;
@@ -38,8 +37,6 @@ h1{
     &:hover{
         background-color: white;
         color:$bg-color;
-        border-radius: 10cm;
-        border: none;
     }
 }
 
@@ -53,26 +50,21 @@ h1{
     
 }
 
-
-
-
 .input{
     width: 90%;
-    font-size: 30px;
-    border-radius: 10cm;
     text-align: center;
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    @include first;
 }
 input{
     margin-top: 2%;
-    border-radius: 20%;
     width: 50%;
-    border: none;
     background-color: rgb(247, 247, 247);
     text-align: center;
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    @include first;
 }
 .select{
     text-align: center;
@@ -80,13 +72,12 @@ input{
 }
 select{
     margin-top: 10%;
-    border-radius: 20cm;
-    border: none;
     background-color: $bg-color;
     text-align: center;
     color: white;
     width: 30%;
     height: 50px;
+    @include first;
     &:hover{
         background-color: white;
         color: $bg-color;
@@ -95,12 +86,9 @@ select{
 .comButton{
     margin-left: 30%;
     width: 4%;
-    border: none;
     background-color: white;
     color: green;
-    font-size: 20px;
-    border-radius: 10px;
-
+    @include first;
     &:hover{
         background-color: green;
         color: white;
@@ -109,12 +97,9 @@ select{
 }
 .editButton{
     width: 4%;
-    border: none;
     background-color: white;
     color: blue;
-    font-size: 20px;
-    border-radius: 10px;
-
+    @include first;
     &:hover{
         background-color: blue;
         color: white;
@@ -123,12 +108,9 @@ select{
 }
 .deleteButton{
     width: 4%;
-    border: none;
     color: red;
     background-color: white;
-    font-size: 20px;
-    border-radius: 10px;
-
+    @include first;
     &:hover{
         color: white;
         background-color: red;
