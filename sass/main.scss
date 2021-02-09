@@ -1,14 +1,10 @@
+@import "mixin";
+@import "var";
+
 *{
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
-}
-
-$bg-color:#343a40;
-@mixin first{
-    border: none;
-    font-size: 20px;
-    border-radius: 10px;
 }
 
 h1{
@@ -150,5 +146,5 @@ form button{
     opacity: 0%;
 }
 .container{
-    padding: 29vh;
+    padding-top: 30%;
 }
