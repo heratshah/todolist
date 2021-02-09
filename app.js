@@ -1,12 +1,12 @@
-const addbutton = document.querySelector('.addbutton');
+const addbutton = document.querySelector('.add-button');
 var input = document.querySelector('.input');
 const todolist = document.querySelector('.todo-list');
 const poplist = document.querySelector('.poplist');
-const filterOption =document.querySelector('.filter-item');
-const checkitem =document.querySelector('.check-item');
+const select__item =document.querySelector('.select__item');
+const selectcheck__item =document.querySelector('.select-check__item');
 
-const deleteall = document.querySelector('.deleteall');
-const ckck = document.getElementById('ckck');
+const select__deleteall = document.querySelector('.select__deleteall');
+const inputcheckbox = document.getElementById('input-checkbox');
 
 
 class item{
@@ -174,13 +174,13 @@ class item{
             comButton.addEventListener('click', ()=> this.complate(comButton));
             editButton.addEventListener('click', ()=> this.edit(editButton));
             deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
-            filterOption.addEventListener('change',()=> this.filtertodo(event));
-            deleteall.addEventListener('click',()=> this.deleteAll());
+            select__item.addEventListener('change',()=> this.filtertodo(event));
+            select__deleteall.addEventListener('click',()=> this.deleteAll());
             checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));
             
         }, this);
-        checkitem.addEventListener('change', ()=> this.checked(checkitem));
-        ckck.addEventListener('click', ()=> this.SelectAll(ckck));
+        selectcheck__item.addEventListener('change', ()=> this.checked(selectcheck__item));
+        inputcheckbox.addEventListener('click', ()=> this.SelectAll(inputcheckbox));
 
     }
 
@@ -237,51 +237,51 @@ class item{
     checked(item){
         let cmtbybox = todolist.childNodes;
         switch(item.value){
-            case 'Delete':
+            case 'delete':
                 cmtbybox.forEach(item=>{
                     if(item.childNodes[0].checked){
                         item.classList.add("fall");
-                        ckck.checked=false;
+                        inputcheckbox.checked=false;
                         this.removelocaltodo(item);
                         item.addEventListener('transitionend',function(){
                         item.remove();
                     });
                 }
-                checkitem.value="";
+                selectcheck__item.value="";
             }, this);
             break;
-            case 'Completed':
+            case 'completed':
                 cmtbybox.forEach(item=>{
                     if(item.childNodes[0].checked)
                     {
                         if (item.classList.contains("complated")) {
                             item.children[0].checked = false;
-                            ckck.checked=false;
+                            inputcheckbox.checked=false;
                         }
                         else{
                             item.classList.toggle("complated");
                             item.children[0].checked = false;
-                            ckck.checked=false;
+                            inputcheckbox.checked=false;
                         }
                     }
-                    checkitem.value="";
+                    selectcheck__item.value="";
                 });
             break;    
-            case 'Uncomplated':
+            case 'uncomplated':
                 cmtbybox.forEach(item=>{
                     if(item.childNodes[0].checked)
                     {
                         if (!item.classList.contains("complated")) {
                             item.children[0].checked = false;
-                            ckck.checked=false;
+                            inputcheckbox.checked=false;
                         }
                         else{
                             item.classList.toggle("complated");
                             item.children[0].checked = false;
-                            ckck.checked=false;
+                            inputcheckbox.checked=false;
                         }   
                     }
-                    checkitem.value="";
+                    selectcheck__item.value="";
                 });
             break;
         }
@@ -319,9 +319,9 @@ class item{
             }
         });
         if(selectbox.length==count){
-            ckck.checked=true;
+            inputcheckbox.checked=true;
         }else{
-            ckck.checked=false;
+            inputcheckbox.checked=false;
         }
     }
 }
