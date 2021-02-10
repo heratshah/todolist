@@ -51,7 +51,18 @@ h1 {
 }
 
 .input {
-  width: 90%;
+  width: 70%;
+  text-align: center;
+  color: #343a40;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: none;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.date {
+  width: 20%;
+  background-color: #f7f7f7;
   text-align: center;
   color: #343a40;
   font-family: Verdana, Geneva, Tahoma, sans-serif;

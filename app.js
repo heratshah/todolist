@@ -1,4 +1,30 @@
+/*var firebaseConfig = {
+    apiKey: "AIzaSyDtS8QCvIqCa62tqfIVYcEcHQRZCV613N4",
+    authDomain: "todolist-63214.firebaseapp.com",
+    databaseURL: "https://todolist-63214-default-rtdb.firebaseio.com",
+    projectId: "todolist-63214",
+    storageBucket: "todolist-63214.appspot.com",
+    messagingSenderId: "780253184309",
+    appId: "1:780253184309:web:5841cb837d48f4fc7f4c7c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
+  var namev,datev;
+  function ready(){
+    namev=document.getElementById('input').value;
+    datev=document.getElementById('date').value;
+  }
+  
+  //Insert Firebase___
+  document.getElementsByClassName('add-button').onclick = function(){
+    ready();
+    firebase.database().ref('todolist/'+namev).set({
+    Name: namev,
+    Date: datev
+    });
+  }
+*/
 const addbutton = document.querySelector('.add-button');
 var input = document.querySelector('.input');
 var date = document.querySelector('.date');
@@ -22,7 +48,7 @@ class item{
 
         this.savelocaltodo(itemname);
         Cookies.set(input.value, date.value, { expires: 1 });
-        
+
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
 
@@ -50,6 +76,11 @@ class item{
               
         todolist.appendChild(itemBox);
 
+        firebase.database().ref('todolist/'+input).set({
+            Name: inputname,
+            Date: inputdate
+        });
+        
         location.reload();
     }
 

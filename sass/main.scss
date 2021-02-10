@@ -47,7 +47,15 @@ h1{
 }
 
 .input{
-    width: 90%;
+    width: 70%;
+    text-align: center;
+    color: $bg-color;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    @include first;
+}
+.date{
+    width: 20%;
+    background-color: rgb(247, 247, 247);
     text-align: center;
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

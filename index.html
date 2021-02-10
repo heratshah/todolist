@@ -16,7 +16,7 @@
         <h1><span>TODO LIST</span></h1>
       </nav>
       <form>
-        <input class="input" type="text" placeholder="Enter list element ......"/>
+        <input class="input" id="input" type="text" placeholder="Enter list element ......"/>
         <input type="date" id="date" class="date">
         <button class="add-button"><i class="fa fa-plus"></i></button>
         <div class="select">
@@ -40,6 +40,9 @@
     </div>
     <div class="container"><ul class="todo-list"></ul></div>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
