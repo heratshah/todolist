@@ -1,5 +1,7 @@
+
 const addbutton = document.querySelector('.add-button');
 var input = document.querySelector('.input');
+var date = document.querySelector('.date');
 const todolist = document.querySelector('.todo-list');
 const poplist = document.querySelector('.poplist');
 const select__item =document.querySelector('.select__item');
@@ -19,7 +21,8 @@ class item{
         input.type = 'text';
 
         this.savelocaltodo(itemname);
-              
+        Cookies.set(input.value, date.value, { expires: 1 });
+        
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
 
@@ -68,7 +71,10 @@ class item{
             this.removelocaltodo(itemBox);
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
+                Cookies.remove(itemBox.childNodes[1].value);
+                location.reload();
             });
+            
         }
 
     }
@@ -329,7 +335,7 @@ class item{
 document.addEventListener("DOMContentLoaded", new item().showlocaltodo());
 
 function check(event){
-    if(input.value === ""){
+    if(input.value === "" || date.value == ""){
         event.preventDefault();
         alert("Empty list element.....");
     }
