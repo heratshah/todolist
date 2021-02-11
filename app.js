@@ -70,7 +70,7 @@ class item{
         itemBox.appendChild(input);
         itemBox.appendChild(date);
         itemBox.appendChild(comButton);
-        //itemBox.appendChild(editButton);
+        itemBox.appendChild(editButton);
         itemBox.appendChild(deleteButton);
               
         todolist.appendChild(itemBox);
@@ -99,7 +99,7 @@ class item{
             firebase.database().ref('todolist/'+revalue).remove();
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
-                location.reload();
+                //location.reload();
             });
             
         }
@@ -230,7 +230,17 @@ class item{
         }
 
         const todoIndex =todo.children[1].value;
-        todos.splice(todos.indexOf(todoIndex),1);
+        //console.log(todoIndex);
+        //console.log(todos[0].input);
+        todos.forEach(function(todo){
+            //console.log(todo.input);
+            if(todoIndex == todo.input){
+                //console.log(todos.indexOf(todo));
+                todos.splice(todos.indexOf(todo),1);
+                localStorage.setItem("todos", JSON.stringify(todos));
+            }
+        });
+        //todos.splice(todos.indexOf(todoIndex),1);
         localStorage.setItem("todos", JSON.stringify(todos));
 
     }
