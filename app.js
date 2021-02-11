@@ -1,30 +1,16 @@
-/*var firebaseConfig = {
-    apiKey: "AIzaSyDtS8QCvIqCa62tqfIVYcEcHQRZCV613N4",
-    authDomain: "todolist-63214.firebaseapp.com",
-    databaseURL: "https://todolist-63214-default-rtdb.firebaseio.com",
-    projectId: "todolist-63214",
-    storageBucket: "todolist-63214.appspot.com",
-    messagingSenderId: "780253184309",
-    appId: "1:780253184309:web:5841cb837d48f4fc7f4c7c"
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCG8w1VAnqzmTBm7UJrojtSVY71IU3GybM",
+    authDomain: "firwbasejavas.firebaseapp.com",
+    projectId: "firwbasejavas",
+    storageBucket: "firwbasejavas.appspot.com",
+    messagingSenderId: "376795258568",
+    appId: "1:376795258568:web:2993ca0112d45d4306cffd"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  var namev,datev;
-  function ready(){
-    namev=document.getElementById('input').value;
-    datev=document.getElementById('date').value;
-  }
-  
-  //Insert Firebase___
-  document.getElementsByClassName('add-button').onclick = function(){
-    ready();
-    firebase.database().ref('todolist/'+namev).set({
-    Name: namev,
-    Date: datev
-    });
-  }
-*/
+
 const addbutton = document.querySelector('.add-button');
 var input = document.querySelector('.input');
 var date = document.querySelector('.date');
@@ -36,6 +22,7 @@ const selectcheck__item =document.querySelector('.select-check__item');
 const select__deleteall = document.querySelector('.select__deleteall');
 const inputcheckbox = document.getElementById('input-checkbox');
 
+var nameV,dateV;
 
 class item{
     createDiv(itemname){
@@ -46,9 +33,14 @@ class item{
         input.classList.add('item_input');
         input.type = 'text';
 
+        this.Ready();
+        firebase.database().ref('todolist/'+nameV).set({
+            Name: nameV,
+            Date: dateV
+        });
         this.savelocaltodo(itemname);
         Cookies.set(input.value, date.value, { expires: 1 });
-
+        
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
 
@@ -76,12 +68,7 @@ class item{
               
         todolist.appendChild(itemBox);
 
-        firebase.database().ref('todolist/'+input).set({
-            Name: inputname,
-            Date: inputdate
-        });
-        
-        location.reload();
+        //location.reload();
     }
 
     edit(item){
@@ -102,8 +89,10 @@ class item{
             this.removelocaltodo(itemBox);
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
-                Cookies.remove(itemBox.childNodes[1].value);
-                location.reload();
+                var revalue=itemBox.childNodes[1].value;
+                Cookies.remove(revalue);
+                firebase.database().ref('todolist/'+revalue).remove();
+                //location.reload();
             });
             
         }
@@ -212,7 +201,6 @@ class item{
             editButton.addEventListener('click', ()=> this.edit(editButton));
             deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
             select__item.addEventListener('change',()=> this.filtertodo(event));
-            select__deleteall.addEventListener('click',()=> this.deleteAll());
             checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));
             
         }, this);
@@ -256,20 +244,6 @@ class item{
 
     }
 
-    deleteAll(){
-
-        let todos;
-        if(localStorage.getItem('todos') === null){
-            todos =[];
-        }else{
-            todos = JSON.parse(localStorage.getItem('todos'));
-        }
-
-        todos=[];
-        localStorage.setItem("todos", JSON.stringify(todos));
-
-    }
-   
    
     checked(item){
         let cmtbybox = todolist.childNodes;
@@ -361,6 +335,11 @@ class item{
             inputcheckbox.checked=false;
         }
     }
+
+    Ready(){
+        nameV = document.getElementById('inputbox').value;
+        dateV = document.getElementById('datebox').value;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", new item().showlocaltodo());
@@ -374,6 +353,7 @@ function check(event){
         event.preventDefault();
         new item().createDiv(input.value);
         input.value = "";
+        date.value = ""
     }
 }
 
