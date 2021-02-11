@@ -25,7 +25,7 @@ const inputcheckbox = document.getElementById('input-checkbox');
 var nameV,dateV;
 
 class item{
-    createDiv(itemname){
+    createDiv(itemname,itemdate){
 
         let input = document.createElement('input');
         input.value =itemname;
@@ -33,13 +33,19 @@ class item{
         input.classList.add('item_input');
         input.type = 'text';
 
+        let date = document.createElement('input');
+        date.value =itemdate;
+        date.disabled = true;
+        date.classList.add('item_date');
+        date.type = 'date';
+
         this.Ready();
         firebase.database().ref('todolist/'+nameV).set({
             Name: nameV,
             Date: dateV
         });
-        this.savelocaltodo(itemname);
         Cookies.set(input.value, date.value, { expires: 1 });
+        this.savelocaltodo(itemname,itemdate);
         
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
@@ -62,19 +68,20 @@ class item{
 
         itemBox.appendChild(checkboxButton);
         itemBox.appendChild(input);
+        itemBox.appendChild(date);
         itemBox.appendChild(comButton);
-        itemBox.appendChild(editButton);
+        //itemBox.appendChild(editButton);
         itemBox.appendChild(deleteButton);
               
         todolist.appendChild(itemBox);
 
-        //location.reload();
     }
 
     edit(item){
 
         if(item.classList[0] === "editButton"){
             const itemBox =item.parentElement;
+            //itemBox.children[1].disabled=!itemBox.children[1].disabled;
             this.editlocaltodo(itemBox);
             location.reload();
 
@@ -87,12 +94,12 @@ class item{
             const itemBox =item.parentElement;
             itemBox.classList.add('fall');
             this.removelocaltodo(itemBox);
+            var revalue=itemBox.childNodes[1].value;
+            Cookies.remove(revalue);
+            firebase.database().ref('todolist/'+revalue).remove();
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
-                var revalue=itemBox.childNodes[1].value;
-                Cookies.remove(revalue);
-                firebase.database().ref('todolist/'+revalue).remove();
-                //location.reload();
+                location.reload();
             });
             
         }
@@ -137,7 +144,7 @@ class item{
 
     }
 
-    savelocaltodo(input){
+    savelocaltodo(input,date){
 
         let todos;
         if(localStorage.getItem('todos') === null){
@@ -145,10 +152,9 @@ class item{
         }else{
             todos = JSON.parse(localStorage.getItem('todos'));
         }
-
-        todos.push(input);
+        var useritem={input,date};
+        todos.push(useritem);
         localStorage.setItem('todos',JSON.stringify(todos));
-
     }
 
     showlocaltodo(){
@@ -159,15 +165,19 @@ class item{
         }else{
             todos = JSON.parse(localStorage.getItem('todos'));
         }
-
         todos.forEach(function(todo){
             let input = document.createElement('input');
-            input.value =todo;
+            input.value =todo.input;
             input.disabled = true;
             input.classList.add('item_input');
             input.type = 'text';
-    
-    
+            
+            let date = document.createElement('input');
+            date.value =todo.date;
+            date.disabled = true;
+            date.classList.add('item_date');
+            date.type = 'text';
+
             let itemBox = document.createElement('div');
             itemBox.classList.add('item');
     
@@ -190,6 +200,7 @@ class item{
             
             itemBox.appendChild(checkboxButton);
             itemBox.appendChild(input);
+            itemBox.appendChild(date);
             itemBox.appendChild(comButton);
             itemBox.appendChild(editButton);
             itemBox.appendChild(deleteButton);
@@ -234,12 +245,17 @@ class item{
         }
 
         let todoIndex =todo.children[1].value;
+        //let user =todo.children[1].value;
         var user=prompt("Enter : ",todoIndex);
-        if(user === ""){
+        if(user ===""){
             alert("Empty edit value.....");    
-        }else{
+        }if(user !==""){
             todos.splice(todos.indexOf(todoIndex),1,user);
             localStorage.setItem('todos',JSON.stringify(todos));
+            this.Ready();
+            firebase.database().ref('todolist/'+todoIndex).update({
+            Name: user
+            });
         }
 
     }
@@ -351,9 +367,9 @@ function check(event){
     }
     else{
         event.preventDefault();
-        new item().createDiv(input.value);
+        new item().createDiv(input.value,date.value);
         input.value = "";
-        date.value = ""
+        date.value = "";
     }
 }
 
