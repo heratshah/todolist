@@ -1,3 +1,15 @@
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCG8w1VAnqzmTBm7UJrojtSVY71IU3GybM",
+    authDomain: "firwbasejavas.firebaseapp.com",
+    projectId: "firwbasejavas",
+    storageBucket: "firwbasejavas.appspot.com",
+    messagingSenderId: "376795258568",
+    appId: "1:376795258568:web:2993ca0112d45d4306cffd"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
 
 const addbutton = document.querySelector('.add-button');
 var input = document.querySelector('.input');
@@ -10,6 +22,7 @@ const selectcheck__item =document.querySelector('.select-check__item');
 const select__deleteall = document.querySelector('.select__deleteall');
 const inputcheckbox = document.getElementById('input-checkbox');
 
+var nameV,dateV;
 
 class item{
     createDiv(itemname){
@@ -20,6 +33,11 @@ class item{
         input.classList.add('item_input');
         input.type = 'text';
 
+        this.Ready();
+        firebase.database().ref('todolist/'+nameV).set({
+            Name: nameV,
+            Date: dateV
+        });
         this.savelocaltodo(itemname);
         Cookies.set(input.value, date.value, { expires: 1 });
         
@@ -50,7 +68,7 @@ class item{
               
         todolist.appendChild(itemBox);
 
-        location.reload();
+        //location.reload();
     }
 
     edit(item){
@@ -71,8 +89,10 @@ class item{
             this.removelocaltodo(itemBox);
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
-                Cookies.remove(itemBox.childNodes[1].value);
-                location.reload();
+                var revalue=itemBox.childNodes[1].value;
+                Cookies.remove(revalue);
+                firebase.database().ref('todolist/'+revalue).remove();
+                //location.reload();
             });
             
         }
@@ -181,7 +201,6 @@ class item{
             editButton.addEventListener('click', ()=> this.edit(editButton));
             deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
             select__item.addEventListener('change',()=> this.filtertodo(event));
-            select__deleteall.addEventListener('click',()=> this.deleteAll());
             checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));
             
         }, this);
@@ -225,20 +244,6 @@ class item{
 
     }
 
-    deleteAll(){
-
-        let todos;
-        if(localStorage.getItem('todos') === null){
-            todos =[];
-        }else{
-            todos = JSON.parse(localStorage.getItem('todos'));
-        }
-
-        todos=[];
-        localStorage.setItem("todos", JSON.stringify(todos));
-
-    }
-   
    
     checked(item){
         let cmtbybox = todolist.childNodes;
@@ -330,6 +335,11 @@ class item{
             inputcheckbox.checked=false;
         }
     }
+
+    Ready(){
+        nameV = document.getElementById('inputbox').value;
+        dateV = document.getElementById('datebox').value;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", new item().showlocaltodo());
@@ -343,6 +353,7 @@ function check(event){
         event.preventDefault();
         new item().createDiv(input.value);
         input.value = "";
+        date.value = ""
     }
 }
 
