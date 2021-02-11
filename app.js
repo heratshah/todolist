@@ -70,7 +70,7 @@ class item{
         itemBox.appendChild(input);
         itemBox.appendChild(date);
         itemBox.appendChild(comButton);
-        itemBox.appendChild(editButton);
+        //itemBox.appendChild(editButton);
         itemBox.appendChild(deleteButton);
               
         todolist.appendChild(itemBox);
@@ -83,7 +83,7 @@ class item{
             const itemBox =item.parentElement;
             //itemBox.children[1].disabled=!itemBox.children[1].disabled;
             this.editlocaltodo(itemBox);
-            location.reload();
+            //location.reload();
 
         }
     }
@@ -202,14 +202,14 @@ class item{
             itemBox.appendChild(input);
             itemBox.appendChild(date);
             itemBox.appendChild(comButton);
-            itemBox.appendChild(editButton);
+            //itemBox.appendChild(editButton);
             itemBox.appendChild(deleteButton);
             
             
             todolist.appendChild(itemBox);
 
             comButton.addEventListener('click', ()=> this.complate(comButton));
-            editButton.addEventListener('click', ()=> this.edit(editButton));
+            //editButton.addEventListener('click', ()=> this.edit(editButton));
             deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
             select__item.addEventListener('change',()=> this.filtertodo(event));
             checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));
@@ -260,8 +260,19 @@ class item{
         if(user ===""){
             alert("Empty edit value.....");    
         }if(user !==""){
-            todos.splice(todos.indexOf(todoIndex),1,user);
-            localStorage.setItem('todos',JSON.stringify(todos));
+            todos.forEach(function(todo){
+                //console.log(todo.input);
+                if(todoIndex == todo.input){
+                    //console.log(todos.indexOf(todo));
+                    var index=todos.indexOf(todo);
+                    console.log(todo);
+                    console.log(todos[index].input=user);
+                    todos.splice(todos[index].input,1,user);
+                    //localStorage.setItem("todos", JSON.stringify(todos));
+                }
+            });
+            //todos.splice(todos.indexOf(todoIndex),1,user);
+            //localStorage.setItem('todos',JSON.stringify(todos));
             this.Ready();
             firebase.database().ref('todolist/'+todoIndex).update({
             Name: user
