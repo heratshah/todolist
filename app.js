@@ -39,13 +39,9 @@ class item{
         date.classList.add('item_date');
         date.type = 'date';
 
-        this.Ready();
-        firebase.database().ref('todolist/'+nameV).set({
-            Name: nameV,
-            Date: dateV
-        });
-        Cookies.set(input.value, date.value, { expires: 1 });
+        this.addfirebase();
         this.savelocaltodo(itemname,itemdate);
+        this.addCookies();
         
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
@@ -70,33 +66,31 @@ class item{
         itemBox.appendChild(input);
         itemBox.appendChild(date);
         itemBox.appendChild(comButton);
-        itemBox.appendChild(editButton);
+        //itemBox.appendChild(editButton);
         itemBox.appendChild(deleteButton);
               
         todolist.appendChild(itemBox);
 
+        
     }
 
     edit(item){
 
         if(item.classList[0] === "editButton"){
             const itemBox =item.parentElement;
-            //itemBox.children[1].disabled=!itemBox.children[1].disabled;
             this.editlocaltodo(itemBox);
-            //location.reload();
+            location.reload();
 
         }
     }
     
     remove(item){
-
         if(item.classList[0] === "deleteButton"){
             const itemBox =item.parentElement;
             itemBox.classList.add('fall');
             this.removelocaltodo(itemBox);
-            var revalue=itemBox.childNodes[1].value;
-            Cookies.remove(revalue);
-            firebase.database().ref('todolist/'+revalue).remove();
+            this.removefirebase(itemBox);
+            this.removecookies(itemBox);
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
                 //location.reload();
@@ -202,7 +196,7 @@ class item{
             itemBox.appendChild(input);
             itemBox.appendChild(date);
             itemBox.appendChild(comButton);
-            itemBox.appendChild(editButton);
+            //itemBox.appendChild(editButton);
             itemBox.appendChild(deleteButton);
             
             
@@ -230,17 +224,12 @@ class item{
         }
 
         const todoIndex =todo.children[1].value;
-        //console.log(todoIndex);
-        //console.log(todos[0].input);
         todos.forEach(function(todo){
-            //console.log(todo.input);
             if(todoIndex == todo.input){
-                //console.log(todos.indexOf(todo));
                 todos.splice(todos.indexOf(todo),1);
                 localStorage.setItem("todos", JSON.stringify(todos));
             }
         });
-        //todos.splice(todos.indexOf(todoIndex),1);
         localStorage.setItem("todos", JSON.stringify(todos));
 
     }
@@ -291,6 +280,8 @@ class item{
                         item.classList.add("fall");
                         inputcheckbox.checked=false;
                         this.removelocaltodo(item);
+                        this.removefirebase(item);
+                        this.removecookies(item);
                         item.addEventListener('transitionend',function(){
                         item.remove();
                     });
@@ -377,6 +368,27 @@ class item{
         nameV = document.getElementById('inputbox').value;
         dateV = document.getElementById('datebox').value;
     }
+
+    addfirebase(){
+        this.Ready();
+        firebase.database().ref('todolist/'+nameV).set({
+            Name: nameV,
+            Date: dateV
+        });
+        setTimeout("location.reload(true);", 1000);
+    }
+    addCookies(){
+        Cookies.set(input.value, date.value, { expires: 1 });
+        //location.reload()
+    }
+    removefirebase(itemBox){
+        var revalue=itemBox.childNodes[1].value;
+        firebase.database().ref('todolist/'+revalue).remove();
+    }
+    removecookies(itemBox){
+        var revalue=itemBox.childNodes[1].value;
+        Cookies.remove(revalue);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", new item().showlocaltodo());
@@ -389,6 +401,7 @@ function check(event){
     else{
         event.preventDefault();
         new item().createDiv(input.value,date.value);
+        alert("Add successfully__");
         input.value = "";
         date.value = "";
     }
