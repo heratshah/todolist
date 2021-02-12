@@ -22,6 +22,9 @@ p{
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     @include first;
+    &:focus{
+        background:transparent;
+    }
 }
 .date{
     width: 29%;
@@ -30,6 +33,9 @@ p{
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     @include first;
+    &:focus{
+        background:transparent;
+    }
 }
 .add-button{
     margin-top: 1%;
@@ -38,9 +44,10 @@ p{
     background-color: royalblue;
     opacity: 0.6;   
     color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     @include first;
     &:hover{
-        color: red;
+        opacity: 0.8;
     }
 }
 .select{
@@ -101,6 +108,14 @@ form button{
     transition: all 1s ease;
     display: flex;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    &:hover{
+        input{
+            background-color: royalblue;
+            opacity: 0.6;   
+            color: white;
+            @include first;
+        }
+    }
 }
 
 .checkboxButton{
@@ -122,7 +137,7 @@ input{
 
 
 .comButton{
-    margin-left: 10%;
+    margin-left: 15%;
     width: 5%;
     background-color: white;
     color: green;
@@ -159,7 +174,11 @@ input{
 
 .complated{
     text-decoration: line-through;
-    color: #d9534f;
+    color: red;
+    input{
+        background-color: lightgray;
+        color:white;
+    }
 }
 
 .fall{
