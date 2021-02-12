@@ -10,40 +10,39 @@
   padding: 2% 0% 3% 0%;
 }
 
-p {
+h1 {
   text-align: center;
   color: #f7f7f7;
   font-family: serif;
-  font-size: 60px;
 }
 
 .input {
-  width: 70%;
+  width: 69%;
   text-align: center;
   color: #343a40;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .input:focus {
-  background: transparent;
+  opacity: 0.6;
 }
 
 .date {
-  width: 29%;
+  width: 29.6%;
   background-color: #f7f7f7;
   text-align: center;
   color: #343a40;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .date:focus {
-  background: transparent;
+  opacity: 0.6;
 }
 
 .add-button {
@@ -56,7 +55,7 @@ p {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .add-button:hover {
@@ -74,10 +73,10 @@ p {
   color: #343a40;
   width: 99%;
   text-align: center;
-  height: 50px;
+  height: 2rem;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .select__item:hover {
@@ -97,11 +96,11 @@ p {
 .select-check__item {
   background-color: #f7f7f7;
   color: #343a40;
-  width: 94%;
-  height: 50px;
+  width: 93%;
+  height: 2rem;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .select-check__item:hover {
@@ -136,7 +135,7 @@ form button {
   color: white;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .checkboxButton {
@@ -152,7 +151,7 @@ input {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .item_date {
@@ -167,7 +166,7 @@ input {
   color: green;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .comButton:hover {
@@ -181,7 +180,7 @@ input {
   color: blue;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .editButton:hover {
@@ -195,7 +194,7 @@ input {
   background-color: white;
   border: none;
   font-size: 100%;
-  border-radius: 10px;
+  border-radius: 5rem;
 }
 
 .deleteButton:hover {

@@ -401,7 +401,7 @@ function check(event){
     else{
         event.preventDefault();
         new item().createDiv(input.value,date.value);
-        alert("Add successfully__");
+        alert("Add successfully!");
         input.value = "";
         date.value = "";
     }

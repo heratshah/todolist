@@ -10,31 +10,30 @@
     background-image: url(/img/nav2.jpg);
     padding: 2% 0% 3% 0%;
 }
-p{
+h1{
     text-align: center;
     color: #f7f7f7;
     font-family: serif;
-    font-size: 60px;
 }
 .input{
-    width: 70%;
+    width: 69%;
     text-align: center;
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     @include first;
     &:focus{
-        background:transparent;
+        opacity: 0.6;
     }
 }
 .date{
-    width: 29%;
+    width: 29.6%;
     background-color: rgb(247, 247, 247);
     text-align: center;
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     @include first;
     &:focus{
-        background:transparent;
+        opacity: 0.6;
     }
 }
 .add-button{
@@ -60,7 +59,7 @@ p{
     color: $bg-color;
     width: 99%;
     text-align: center;
-    height: 50px;
+    height: 2rem;
     @include first;
     &:hover{
         color: $bg-color;
@@ -82,8 +81,8 @@ p{
 .select-check__item{
     background-color: rgb(247, 247, 247);
     color: $bg-color;
-    width: 94%;
-    height: 50px;
+    width: 93%;
+    height: 2rem;
     @include first;
     &:hover{
         background-color: white;
