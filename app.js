@@ -70,7 +70,7 @@ class item{
         itemBox.appendChild(input);
         itemBox.appendChild(date);
         itemBox.appendChild(comButton);
-        //itemBox.appendChild(editButton);
+        itemBox.appendChild(editButton);
         itemBox.appendChild(deleteButton);
               
         todolist.appendChild(itemBox);
@@ -202,7 +202,7 @@ class item{
             itemBox.appendChild(input);
             itemBox.appendChild(date);
             itemBox.appendChild(comButton);
-            //itemBox.appendChild(editButton);
+            itemBox.appendChild(editButton);
             itemBox.appendChild(deleteButton);
             
             

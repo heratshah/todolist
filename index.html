@@ -11,14 +11,14 @@
   </head>
 
   <body>
-    <div class="container-fluid bg-dark fixed-top">
+    <div class="container-fluid">
       <nav>
-        <h1><span>TODO LIST</span></h1>
+        <p>TODO LIST</p>
       </nav>
       <form>
         <input id="inputbox" class="input" type="text" placeholder="Enter list element ......"/>
         <input id="datebox" type="date" class="date">
-        <button id="insert" class="add-button"><i class="fa fa-plus"></i></button>
+        <button id="insert" class="add-button"><i class="fa fa-plus"></i>ADD LIST</button>
         <div class="select">
           <select name="todos" class="select__item">
             <option value="all">All</option>
@@ -26,18 +26,20 @@
             <option value="uncomplated">Uncomplated</option>
           </select>
         </div><br>
-        <div class="select-check">
-          <input type="checkbox" class="select-check__input" id="input-checkbox" value="Select All"/>
-          <select name="todos" class="select-check__item">
-            <option value="">Select-One</option>
-            <option value="delete">Delete</option>
-            <option value="completed">Completed</option>
-            <option value="uncomplated">Uncomplated</option>
-          </select>
-        </div>
       </form>
     </div>
-    <div class="container"><ul class="todo-list"></ul></div>
+    <div class="maindiv">
+    <div class="select-check">
+      <input type="checkbox" class="select-check__input" id="input-checkbox" value="Select All"/>
+      <select name="todos" class="select-check__item">
+        <option value="">Select-One</option>
+        <option value="delete">Delete</option>
+        <option value="completed">Completed</option>
+        <option value="uncomplated">Uncomplated</option>
+      </select>
+    </div>
+    <div class="list"><ul class="todo-list"></ul></div>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>

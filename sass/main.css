@@ -5,49 +5,16 @@
           box-sizing: border-box;
 }
 
-h1 {
+.container-fluid {
+  background-image: url(/img/nav2.jpg);
+  padding: 2% 0% 3% 0%;
+}
+
+p {
   text-align: center;
   color: #f7f7f7;
   font-family: serif;
-}
-
-.add-button {
-  width: 8%;
-  background-color: #343a40;
-  color: white;
-  border: none;
-  font-size: 20px;
-  border-radius: 10px;
-}
-
-.add-button:hover {
-  background-color: white;
-  color: #343a40;
-}
-
-.select__deleteall {
-  border: none;
-  font-size: 20px;
-  border-radius: 10px;
-  background-color: #343a40;
-  color: white;
-  width: 10%;
-  margin-left: 5%;
-}
-
-.select__deleteall:hover {
-  background-color: white;
-  color: #343a40;
-}
-
-.select-check {
-  margin-left: 20vw;
-}
-
-.select-check .select-check__input {
-  width: 9%;
-  height: 20px;
-  margin-top: 1%;
+  font-size: 60px;
 }
 
 .input {
@@ -56,102 +23,81 @@ h1 {
   color: #343a40;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: none;
-  font-size: 20px;
+  font-size: 100%;
   border-radius: 10px;
 }
 
 .date {
-  width: 20%;
+  width: 29%;
   background-color: #f7f7f7;
   text-align: center;
   color: #343a40;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: none;
-  font-size: 20px;
+  font-size: 100%;
   border-radius: 10px;
 }
 
-input {
-  margin-top: 2%;
-  width: 50%;
-  background-color: #f7f7f7;
-  text-align: center;
-  color: #343a40;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.add-button {
+  margin-top: 1%;
+  width: 99%;
+  background: transparent;
+  background-color: royalblue;
+  opacity: 0.6;
+  color: white;
   border: none;
-  font-size: 20px;
+  font-size: 100%;
   border-radius: 10px;
+}
+
+.add-button:hover {
+  color: red;
 }
 
 .select {
-  text-align: center;
-  margin-top: 1%;
+  margin-top: 2%;
 }
 
-select {
-  margin-top: 10%;
-  background-color: #343a40;
+.select__item {
+  background: transparent;
+  background-color: white;
+  opacity: 0.6;
+  color: #343a40;
+  width: 99%;
   text-align: center;
-  color: white;
-  width: 30%;
   height: 50px;
   border: none;
-  font-size: 20px;
+  font-size: 100%;
   border-radius: 10px;
 }
 
-select:hover {
+.select__item:hover {
+  color: #343a40;
+  opacity: 0.5;
+}
+
+.maindiv {
+  padding: 2% 20% 0% 20%;
+}
+
+.select-check__input {
+  width: 5%;
+  height: 20px;
+}
+
+.select-check__item {
+  background-color: #f7f7f7;
+  color: #343a40;
+  width: 94%;
+  height: 50px;
+  border: none;
+  font-size: 100%;
+  border-radius: 10px;
+}
+
+.select-check__item:hover {
   background-color: white;
   color: #343a40;
-}
-
-.comButton {
-  margin-left: 10%;
-  width: 4%;
-  background-color: white;
-  color: green;
-  border: none;
-  font-size: 20px;
-  border-radius: 10px;
-}
-
-.comButton:hover {
-  background-color: green;
-  color: white;
-}
-
-.editButton {
-  width: 4%;
-  background-color: white;
-  color: blue;
-  border: none;
-  font-size: 20px;
-  border-radius: 10px;
-}
-
-.editButton:hover {
-  background-color: blue;
-  color: white;
-}
-
-.deleteButton {
-  width: 4%;
-  color: red;
-  background-color: white;
-  border: none;
-  font-size: 20px;
-  border-radius: 10px;
-}
-
-.deleteButton:hover {
-  color: white;
-  background-color: red;
-}
-
-.checkboxButton {
-  width: 10%;
-  height: 20px;
-  margin-top: 10px;
 }
 
 form input,
@@ -161,22 +107,86 @@ form button {
   border: none;
 }
 
+.list {
+  margin-top: 1%;
+}
+
 .item {
   margin-top: 2vh;
-  text-align: center;
-  margin-right: 5vw;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 20px;
+}
+
+.checkboxButton {
+  width: 5%;
+  height: 20px;
+}
+
+input {
+  width: 50%;
+  background-color: #f7f7f7;
+  text-align: center;
+  color: #343a40;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: none;
+  font-size: 100%;
+  border-radius: 10px;
+}
+
+.item_date {
+  margin-left: 1%;
+  width: 20%;
+}
+
+.comButton {
+  margin-left: 10%;
+  width: 5%;
+  background-color: white;
+  color: green;
+  border: none;
+  font-size: 100%;
+  border-radius: 10px;
+}
+
+.comButton:hover {
+  background-color: green;
+  color: white;
+}
+
+.editButton {
+  width: 5%;
+  background-color: white;
+  color: blue;
+  border: none;
+  font-size: 100%;
+  border-radius: 10px;
+}
+
+.editButton:hover {
+  background-color: blue;
+  color: white;
+}
+
+.deleteButton {
+  width: 5%;
+  color: red;
+  background-color: white;
+  border: none;
+  font-size: 100%;
+  border-radius: 10px;
+}
+
+.deleteButton:hover {
+  color: white;
+  background-color: red;
 }
 
 .complated {
   text-decoration: line-through;
-  border-radius: 20px;
   color: #d9534f;
 }
 
@@ -184,14 +194,5 @@ form button {
   -webkit-transform: translate(10rem) rotateY(20deg);
           transform: translate(10rem) rotateY(20deg);
   opacity: 0%;
-}
-
-.container {
-  padding-top: 20%;
-}
-
-.item_date {
-  margin-left: 1%;
-  width: 20%;
 }
 /*# sourceMappingURL=main.css.map */
