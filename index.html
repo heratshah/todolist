@@ -16,8 +16,9 @@
         <h1>TODO LIST</h1>
       </nav>
       <form>
-        <input id="inputbox" class="input" type="text" placeholder="Enter list element ......"/>
-        <input id="datebox" type="date" class="date">
+        <input id="inputbox" class="input" type="text" placeholder="Enter list element ......" required/>
+        <!--<input id="datebox" type="date" class="date">-->
+        <input type="date" onload="getDate()" class="date" id="datebox" name="date" hidden>
         <button id="insert" class="add-button"><i class="fa fa-plus"></i>ADD LIST</button>
         <div class="select">
           <select name="todos" class="select__item">

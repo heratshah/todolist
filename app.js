@@ -11,6 +11,7 @@
   firebase.initializeApp(firebaseConfig);
 
 
+
 const addbutton = document.querySelector('.add-button');
 var input = document.querySelector('.input');
 var date = document.querySelector('.date');
@@ -40,15 +41,16 @@ class item{
         date.type = 'date';
 
         this.addfirebase();
-        this.savelocaltodo(itemname,itemdate);
         this.addCookies();
+        this.savelocaltodo(itemname,itemdate);
+        
         
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
 
-        let editButton = document.createElement('button');
-        editButton.innerHTML = '<i class="fa fa-edit" href="#myModal"></i>';
-        editButton.classList.add('editButton');
+        //let editButton = document.createElement('button');
+        //editButton.innerHTML = '<i class="fa fa-edit" href="#myModal"></i>';
+        //editButton.classList.add('editButton');
 
         let deleteButton = document.createElement('button');
         deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
@@ -71,7 +73,6 @@ class item{
               
         todolist.appendChild(itemBox);
 
-        
     }
 
     edit(item){
@@ -93,7 +94,7 @@ class item{
             this.removecookies(itemBox);
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
-                //location.reload();
+                location.reload();
             });
             
         }
@@ -176,9 +177,9 @@ class item{
             itemBox.classList.add('item');
     
 
-            let editButton = document.createElement('button');
-            editButton.innerHTML = '<i class="fa fa-edit"></i>';
-            editButton.classList.add('editButton');
+            //let editButton = document.createElement('button');
+            //editButton.innerHTML = '<i class="fa fa-edit"></i>';
+            //editButton.classList.add('editButton');
     
             let deleteButton = document.createElement('button');
             deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
@@ -375,11 +376,12 @@ class item{
             Name: nameV,
             Date: dateV
         });
-        setTimeout("location.reload(true);", 1000);
+        //setTimeout("location.reload(true);", 1000);
     }
     addCookies(){
         Cookies.set(input.value, date.value, { expires: 1 });
         //location.reload()
+        //setTimeout("location.reload(true);", 1000);
     }
     removefirebase(itemBox){
         var revalue=itemBox.childNodes[1].value;
@@ -395,12 +397,13 @@ document.addEventListener("DOMContentLoaded", new item().showlocaltodo());
 
 function check(event){
     if(input.value === "" || date.value == ""){
-        event.preventDefault();
-        alert("Empty list element.....");
+        //event.preventDefault();
+        //alert("Enter element ...");
     }
     else{
         event.preventDefault();
         new item().createDiv(input.value,date.value);
+        setTimeout("location.reload(true);", 2000);
         alert("Add successfully!");
         input.value = "";
         date.value = "";
@@ -408,3 +411,24 @@ function check(event){
 }
 
 addbutton.addEventListener('click', check);
+
+function getDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+  
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+  
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+  
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("datebox").value = today;
+  }
+  window.onload = function() {
+    getDate();
+  };
