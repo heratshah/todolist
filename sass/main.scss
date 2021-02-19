@@ -6,59 +6,63 @@
     padding: 0%;
     box-sizing: border-box;
 }
-.container-fluid{
-    background-image: url(/img/nav2.jpg);
-    padding: 2% 0% 3% 0%;
+
+.navbar--dark{
+    background-color: #1b405a;
 }
-h1{
-    text-align: center;
-    color: #f7f7f7;
+.navbar__title{
+    margin: auto;
+    color:white;
     font-family: serif;
 }
-.input{
+
+.mainform{
+    margin: 5% 20% 5% 20%;
+}
+form{
+    //background-color: #1b405a;
+    background-image: url(/img/nav2.jpg);
+    padding: 5% 5% 5% 5%;
+}
+
+.form__input{
     width: 100%;
     text-align: center;
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5rem;
     @include first;
     &:focus{
         opacity: 0.6;
     }
 }
-.date{
-    width: 29.6%;
-    background-color: rgb(247, 247, 247);
-    text-align: center;
-    color: $bg-color;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    @include first;
-    &:focus{
-        opacity: 0.6;
-    }
-}
-.add-button{
+
+.button__add{
+    width: 100%;
     margin-top: 1%;
-    width: 99%;
+    padding: 0.5rem;
     background: transparent;
-    background-color: royalblue;
-    opacity: 0.6;   
-    color: white;
+    opacity: 0.6;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     @include first;
+}
+
+.button--royalblue{
+    background-color: royalblue;
+    color: white;
     &:hover{
         opacity: 0.8;
     }
 }
-.select{
-    margin-top: 2%;   
-}
-.select__item{
+
+
+.form__select{
+    margin-top: 2%;
     background: transparent;
     background-color: white;
     opacity: 0.6;
     color: $bg-color;
-    width: 99%;
-    text-align: center;
+    width: 100%;
     height: 2rem;
     @include first;
     &:hover{
@@ -67,8 +71,9 @@ h1{
     }
 }
 
-.maindiv {
-    margin: 1% 20% 0% 20%;
+
+.maindiv{
+    margin: 1% 25% 0% 25%;
 }
 
 
@@ -78,29 +83,20 @@ h1{
 }
 
 
-.select-check__item{
-    background-color: rgb(247, 247, 247);
-    color: $bg-color;
+.select-check__select{
     width: 93%;
     height: 2rem;
     @include first;
-    &:hover{
-        background-color: white;
-        color: $bg-color;
-    }
-}
-form input,
-form button{
-    padding: 0.5rem;
-    background-color: white;
-    border: none;
+    
 }
 
-
+.select-check--white{
+    background-color: rgb(247, 247, 247);
+    color: $bg-color;
+}
 .list{
     margin-top: 1%;
 }
-
 
 .item{
     margin-top: 2vh;
@@ -117,57 +113,54 @@ form button{
     }
 }
 
-.checkboxButton{
+.btn__check{
     width: 5%;
     height: 20px;
+    @include first;
 }
-input{
-    width: 50%;
+.item_input{
+    margin-left: 5%;
+    width: 60%;
     background-color: rgb(247, 247, 247);
     text-align: center;
     color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     @include first;
 }
-.item_date{
-    margin-left: 1%;
-    width: 20%;
-}
 
 
-.comButton{
-    margin-left: 15%;
+.btn__edit,.btn__delete,.btn__complate{
+    margin-left: 2%;
     width: 5%;
-    background-color: white;
-    color: green;
     @include first;
-    &:hover{
-        background-color: green;
-        color: white;
-    }
-
+    
 }
-.editButton{
-    width: 5%;
+.btn__complate{
+    margin-left: 10%;
+}
+.btn--blue{
     background-color: white;
     color: blue;
-    @include first;
     &:hover{
         background-color: blue;
         color: white;
     }
-
 }
-.deleteButton{
-    width: 5%;
+.btn--red{
     color: red;
     background-color: white;
-    @include first;
     &:hover{
         color: white;
         background-color: red;
     }
-
+}
+.btn--green{
+    background-color: white;
+    color: green;
+    &:hover{
+        background-color: green;
+        color: white;
+    }
 }
 
 
