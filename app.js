@@ -44,20 +44,13 @@ class item{
         itemBox.appendChild(checkboxButton);
         itemBox.appendChild(input);
         itemBox.appendChild(comButton);
-        //itemBox.appendChild(editButton);
-        //itemBox.appendChild(deleteButton);
+        itemBox.appendChild(editButton);
+        itemBox.appendChild(deleteButton);
               
         todolist.appendChild(itemBox);
 
-        //location.reload();
-        comButton.addEventListener('click', ()=> this.complate(comButton));
-        editButton.addEventListener('click', ()=> this.edit(editButton));
-        deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
-        form__select.addEventListener('change',()=> this.filtertodo(event));
-        checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));        
-        selectcheck__select.addEventListener('change', ()=> this.checked(selectcheck__select));
-        inputcheckbox.addEventListener('click', ()=> this.SelectAll(inputcheckbox));
-        
+        location.reload();
+
     }
 
    
@@ -65,11 +58,8 @@ class item{
     edit(item){
         if(item.classList[0] === "btn__edit"){
             const itemBox =item.parentElement;
-            let val=itemBox.childNodes[1].value;
-            this.setCookie(val,'',0)
-            let user=prompt("Enter : ");
-            this.setCookie(user,user,1);
-            location.reload();
+            this.editcookies(itemBox);
+            //location.reload();
 
         }
     }
@@ -79,7 +69,7 @@ class item{
             const itemBox =item.parentElement;
             let val=itemBox.childNodes[1].value;
             itemBox.classList.add('fall');
-            this.setCookie(val,'',0);
+            this.removecookies(val);
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
                 location.reload();
@@ -125,19 +115,7 @@ class item{
 
     }
     
-    init() {
-        // debugger;
-        tasks = this.getCookie("todoList");
-        // debugger;
-        if (typeof tasks != "" && tasks != "") {
-            // tasks = JSON.parse(tasks);
-            tasks = JSON.parse(tasks);
-            console.log('hello');
-        } else {
-            tasks = [];
-            console.log('hi');
-        }
-    }
+    
     setCookie(cname, cvalue, exdays) {
         var d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -160,82 +138,100 @@ class item{
         }
         return "";
     }
-    
+    init() {
+        // debugger;
+        tasks = this.getCookie('todolist');
+        // debugger;
+        if (typeof tasks != "" && tasks != "") {
+            tasks = JSON.parse(tasks);
+        } else {
+            tasks = [];
+            console.log('hi');
+        }
+    }
     
 
-    removecookies(cname,expires){
-        document.cookie = cname + "=" +  ";" + expires + ";path=/";
+    removecookies(itemname){
+        tasks = this.getCookie('todolist');
+        tasks = JSON.parse(tasks);
+        for (let index = 0; index < tasks.length; index++) {
+            if (tasks[index].name==itemname) {
+                tasks.splice(index,1);
+                console.log(tasks);
+                this.setCookie('todolist', tasks,1);
+            }
+            
+        }
+        
     }
 
-    editcookies(cname, cvalue, exdays){
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + JSON.stringify(cvalue) + ";" + expires + ";path=/";
+    editcookies(itemBox){
+        let val=itemBox.childNodes[1].value;
+        console.log(val);
+        let user=prompt("Enter : ",val);
+        tasks = this.getCookie('todolist');
+        tasks = JSON.parse(tasks);
+        for (let index = 0; index < tasks.length; index++) {
+            if (tasks[index].name==val) {
+                tasks.splice(index,1,user);
+                console.log(tasks);
+                //this.setCookie('todolist', tasks,1);
+            }
+            
+        }
     }
 
     showCookie(cname) {
-        /*let tasks=document.cookie;
-        //obj = JSON.parse(tasks);
-        console.log(tasks.todolist);
-        */
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
+        tasks = this.getCookie('todolist');
+        tasks = JSON.parse(tasks);
         let index = 0;
-        while(index<ca.length){
-            let user=ca[index].split('=')[1].split(',');
-            for (let index = 0; index < user.length; index++) {
-                let user1=user[index].split(':')[1];
-                let input = document.createElement('input');
-                input.value =(user1.split('"')[1]);
-                input.disabled = true;
-                input.classList.add('item_input');
-                input.type = 'text';
+        while(index<tasks.length){
+            let input = document.createElement('input');
+            input.value =(tasks[index].name);
+            input.disabled = true;
+            input.classList.add('item_input');
+            input.type = 'text';
         
-        
-                let itemBox = document.createElement('div');
-                itemBox.classList.add('item');
+            let itemBox = document.createElement('div');
+            itemBox.classList.add('item');
         
     
-                let editButton = document.createElement('button');
-                editButton.innerHTML = '<i class="fa fa-edit"></i>';
-                editButton.classList.add('btn__edit');
-                editButton.classList.add('btn--blue');
+            let editButton = document.createElement('button');
+            editButton.innerHTML = '<i class="fa fa-edit"></i>';
+            editButton.classList.add('btn__edit');
+            editButton.classList.add('btn--blue');
         
-                let deleteButton = document.createElement('button');
-                deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
-                deleteButton.classList.add('btn__delete');
-                deleteButton.classList.add('btn--red');
+            let deleteButton = document.createElement('button');
+            deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+            deleteButton.classList.add('btn__delete');
+            deleteButton.classList.add('btn--red');
         
-                let comButton = document.createElement('button');
-                comButton.innerHTML = '<i class="fa fa-check"></i>';
-                comButton.classList.add('btn__complate');
-                comButton.classList.add('btn--green');
+            let comButton = document.createElement('button');
+            comButton.innerHTML = '<i class="fa fa-check"></i>';
+            comButton.classList.add('btn__complate');
+            comButton.classList.add('btn--green');
                 
-                let checkboxButton = document.createElement('input');
-                checkboxButton.setAttribute('type','checkbox');
-                checkboxButton.classList.add('btn__check');
+            let checkboxButton = document.createElement('input');
+            checkboxButton.setAttribute('type','checkbox');
+            checkboxButton.classList.add('btn__check');
                 
-                itemBox.appendChild(checkboxButton);
-                itemBox.appendChild(input);
-                itemBox.appendChild(comButton);
-                //itemBox.appendChild(editButton);
-                //itemBox.appendChild(deleteButton);
+            itemBox.appendChild(checkboxButton);
+            itemBox.appendChild(input);
+            itemBox.appendChild(comButton);
+            itemBox.appendChild(editButton);
+            itemBox.appendChild(deleteButton);
                 
                 
-                todolist.appendChild(itemBox);
+            todolist.appendChild(itemBox);
     
-                comButton.addEventListener('click', ()=> this.complate(comButton));
-                //editButton.addEventListener('click', ()=> this.edit(editButton));
-                //deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
-                form__select.addEventListener('change',()=> this.filtertodo(event));
-                checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));        
-                selectcheck__select.addEventListener('change', ()=> this.checked(selectcheck__select));
-                inputcheckbox.addEventListener('click', ()=> this.SelectAll(inputcheckbox));
-            }
-           
-
+            comButton.addEventListener('click', ()=> this.complate(comButton));
+            editButton.addEventListener('click', ()=> this.edit(editButton));
+            deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
+            form__select.addEventListener('change',()=> this.filtertodo(event));
+            checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));        
+            selectcheck__select.addEventListener('change', ()=> this.checked(selectcheck__select));
+            inputcheckbox.addEventListener('click', ()=> this.SelectAll(inputcheckbox));
+            
             index++;
         }
     }
@@ -336,7 +332,7 @@ class item{
 //new item().init();
 document.addEventListener("DOMContentLoaded", new item().init());
 
-//document.addEventListener("DOMContentLoaded", new item().getCookie('todolist'));
+document.addEventListener("DOMContentLoaded", new item().showCookie('todolist'));
 function check(event){
     if(form__input.value === ""){
         event.preventDefault();
