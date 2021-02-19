@@ -59,7 +59,7 @@ class item{
         if(item.classList[0] === "btn__edit"){
             const itemBox =item.parentElement;
             this.editcookies(itemBox);
-            //location.reload();
+            location.reload();
 
         }
     }
@@ -146,7 +146,6 @@ class item{
             tasks = JSON.parse(tasks);
         } else {
             tasks = [];
-            console.log('hi');
         }
     }
     
@@ -159,10 +158,8 @@ class item{
                 tasks.splice(index,1);
                 console.log(tasks);
                 this.setCookie('todolist', tasks,1);
-            }
-            
+            }   
         }
-        
     }
 
     editcookies(itemBox){
@@ -173,9 +170,8 @@ class item{
         tasks = JSON.parse(tasks);
         for (let index = 0; index < tasks.length; index++) {
             if (tasks[index].name==val) {
-                tasks.splice(index,1,user);
-                console.log(tasks);
-                //this.setCookie('todolist', tasks,1);
+                tasks.splice(index,1,{name:user});
+                this.setCookie('todolist', tasks,1);
             }
             
         }
@@ -331,7 +327,6 @@ class item{
 
 //new item().init();
 document.addEventListener("DOMContentLoaded", new item().init());
-
 document.addEventListener("DOMContentLoaded", new item().showCookie('todolist'));
 function check(event){
     if(form__input.value === ""){
