@@ -16,6 +16,7 @@ class item{
         input.classList.add('item_input');
         input.type = 'text';
 
+        //var index = tasks.length;
         tasks.push({ "name": itemname });
         this.setCookie('todolist', tasks,1);
 
@@ -53,7 +54,6 @@ class item{
 
     }
 
-   
 
     edit(item){
         if(item.classList[0] === "btn__edit"){
