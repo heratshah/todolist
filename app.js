@@ -16,15 +16,16 @@ class item{
         input.classList.add('item_input');
         input.type = 'text';
 
-        //var index = tasks.length;
+        //var index = tasks.length+1;
         tasks.push({ "name": itemname });
+        //tasks.push({ "id":index,"name": itemname });
         this.setCookie('todolist', tasks,1);
 
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
 
         let editButton = document.createElement('button');
-        editButton.innerHTML = '<i class="fa fa-edit"></i>';
+        editButton.innerHTML = '<i class="fa fa-edit"></i><div';
         editButton.classList.add('btn__edit');
         editButton.classList.add('btn__blue');
 
@@ -67,6 +68,7 @@ class item{
     remove(item){
         if(item.classList[0] === "btn__delete"){
             const itemBox =item.parentElement;
+            console.log(itemBox.childNodes);    
             let val=itemBox.childNodes[1].value;
             itemBox.classList.add('fall');
             this.removecookies(val);
@@ -241,12 +243,13 @@ class item{
                         let val=item.childNodes[1].value;
                         item.classList.add("fall");
                         inputcheckbox.checked=false;
-                        this.setCookie(val,'',0);
+                        this.removecookies(val);
                         item.addEventListener('transitionend',function(){
                         item.remove();
+                        location.reload();
                     });
                 }
-                selectcheck__item.value="";
+                selectcheck__select.value="";
             }, this);
             break;
             case 'completed':
@@ -263,7 +266,7 @@ class item{
                             inputcheckbox.checked=false;
                         }
                     }
-                    selectcheck__item.value="";
+                    selectcheck__select.value="";
                 });
             break;    
             case 'uncomplated':
@@ -280,7 +283,7 @@ class item{
                             inputcheckbox.checked=false;
                         }   
                     }
-                    selectcheck__item.value="";
+                    selectcheck__select.value="";
                 });
             break;
         }
