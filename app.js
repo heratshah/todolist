@@ -59,11 +59,10 @@ class item {
 
     }
 
-
     edit(item) {
         if (item.classList[0] === "task__edit") {
             const itemBox = item.parentElement;
-            let itemindex = itemBox.childNodes[5].value;
+            let itemindex = itemBox.childNodes[2].value;
             this.editcookies(itemBox, itemindex);
             location.reload();
 
@@ -73,7 +72,7 @@ class item {
     remove(item) {
         if (item.classList[0] === "task__delete") {
             const itemBox = item.parentElement;
-            let itemindex = itemBox.childNodes[5].value;
+            let itemindex = itemBox.childNodes[2].value;
             let val = itemBox.childNodes[1].value;
             itemBox.classList.add('fall');
             this.removecookies(val, itemindex);
@@ -82,7 +81,6 @@ class item {
                 location.reload();
             });
         }
-
 
     }
 
@@ -119,7 +117,6 @@ class item {
         });
 
     }
-
 
     setCookie(cname, cvalue, exdays) {
         var d = new Date();
@@ -161,7 +158,6 @@ class item {
         for (let index = 0; index < tasks.length; index++) {
             if (tasks[index].name == itemname && tasks[index].id == itemindex) {
                 tasks.splice(index, 1);
-                //console.log(tasks);
                 this.setCookie('todolist', tasks, 1);
             }
         }
