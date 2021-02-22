@@ -5,23 +5,17 @@
           box-sizing: border-box;
 }
 
-.todo__nav {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.todo__nav--dark {
+.nav {
+  text-align: center;
   background-color: #1b405a;
 }
 
-.todo__title {
-  margin: auto;
+.nav__title {
   color: white;
   font-family: serif;
 }
 
-.todo__form {
+.form {
   margin: 5% 20% 5% 20%;
 }
 
@@ -30,7 +24,7 @@ form {
   padding: 5% 5% 5% 5%;
 }
 
-.form__name--big {
+.form__name {
   width: 100%;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -41,13 +35,13 @@ form {
   outline: none;
 }
 
-.form__name--big:focus {
+.form__name:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.form__name--big:focus {
+.form__name:focus {
   opacity: 0.6;
 }
 
@@ -62,6 +56,8 @@ form {
   font-size: auto;
   border-radius: 5rem;
   outline: none;
+  background-color: royalblue;
+  color: white;
 }
 
 .form__insert:focus {
@@ -70,12 +66,7 @@ form {
   opacity: 0.7;
 }
 
-.insert--royalblue {
-  background-color: royalblue;
-  color: white;
-}
-
-.insert--royalblue:hover {
+.form__insert:hover {
   opacity: 0.8;
 }
 
@@ -104,16 +95,16 @@ form {
   opacity: 0.5;
 }
 
-.todo__list {
+.todo {
   margin: 1% 25% 0% 25%;
 }
 
-.select-check {
+.select-checkall {
   width: 5%;
   height: 20px;
 }
 
-.select-check__filter--white {
+.select-checkall__filter {
   width: 93%;
   height: 2rem;
   background-color: #f7f7f7;
@@ -124,17 +115,17 @@ form {
   outline: none;
 }
 
-.select-check__filter--white:focus {
+.select-checkall__filter:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.list {
+.todo {
   margin-top: 1%;
 }
 
-.item {
+.todo__task {
   margin-top: 2vh;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
@@ -144,7 +135,7 @@ form {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.item:hover input {
+.todo__task:hover input {
   background-color: royalblue;
   opacity: 0.6;
   color: white;
@@ -154,13 +145,13 @@ form {
   outline: none;
 }
 
-.item:hover input:focus {
+.todo__task:hover input:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.button__check {
+.task__check {
   width: 5%;
   height: 20px;
   border: none;
@@ -169,13 +160,13 @@ form {
   outline: none;
 }
 
-.button__check:focus {
+.task__check:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.item_input {
+.task__input {
   margin-left: 5%;
   width: 60%;
   background-color: #f7f7f7;
@@ -188,67 +179,88 @@ form {
   outline: none;
 }
 
-.item_input:focus {
+.task__input:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.button__edit, .button__delete, .button__complate {
+.task__edit {
   margin-left: 2%;
   width: 5%;
   border: none;
   font-size: auto;
   border-radius: 5rem;
   outline: none;
+  background-color: white;
+  color: blue;
 }
 
-.button__edit:focus, .button__delete:focus, .button__complate:focus {
+.task__edit:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.button__complate {
-  margin-left: 10%;
-}
-
-.button--blue {
-  background-color: white;
-  color: blue;
-}
-
-.button--blue:hover {
+.task__edit:hover {
   background-color: blue;
   color: white;
 }
 
-.button--red {
+.task__delete {
+  margin-left: 2%;
+  width: 5%;
+  border: none;
+  font-size: auto;
+  border-radius: 5rem;
+  outline: none;
   color: red;
   background-color: white;
 }
 
-.button--red:hover {
+.task__delete:focus {
+  border: none;
+  outline: none;
+  opacity: 0.7;
+}
+
+.task__delete:hover {
   color: white;
   background-color: red;
 }
 
-.button--green {
+.task__complate {
+  margin-left: 2%;
+  width: 5%;
+  border: none;
+  font-size: auto;
+  border-radius: 5rem;
+  outline: none;
   background-color: white;
   color: green;
 }
 
-.button--green:hover {
+.task__complate:focus {
+  border: none;
+  outline: none;
+  opacity: 0.7;
+}
+
+.task__complate:hover {
   background-color: green;
   color: white;
 }
 
-.complated {
+.task__complate {
+  margin-left: 10%;
+}
+
+.todo__task--complated {
   text-decoration: line-through;
   color: red;
 }
 
-.complated input {
+.todo__task--complated input {
   background-color: lightgray;
   color: white;
 }

@@ -1,46 +1,43 @@
 @import "mixin";
 @import "var";
-
-*{
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
 
-.todo__nav{
-    align-items: center;
-}
-.todo__nav--dark{
+.nav {
+    text-align: center;
     background-color: #1b405a;
 }
-.todo__title{
-    margin: auto;
-    color:white;
+
+.nav__title {
+    color: white;
     font-family: serif;
 }
 
-.todo__form{
+.form {
     margin: 5% 20% 5% 20%;
 }
 
-form{
+form {
     //background-color: #1b405a;
     background-image: url(/img/nav2.jpg);
     padding: 5% 5% 5% 5%;
 }
 
-.form__name--big{
+.form__name {
     width: 100%;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 0.5rem;
     @include first;
-    &:focus{
+    &:focus {
         opacity: 0.6;
     }
 }
 
-.form__insert{
+.form__insert {
     width: 100%;
     margin-top: 1%;
     padding: 0.5rem;
@@ -48,18 +45,14 @@ form{
     opacity: 0.6;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     @include first;
-}
-
-.insert--royalblue{
     background-color: royalblue;
     color: white;
-    &:hover{
+    &:hover {
         opacity: 0.8;
     }
 }
 
-
-.form__filter{
+.form__filter {
     margin-top: 2%;
     background: transparent;
     background-color: white;
@@ -68,45 +61,40 @@ form{
     width: 100%;
     height: 2rem;
     @include first;
-    &:hover{
+    &:hover {
         color: $bg-color;
         opacity: 0.5;
     }
 }
 
-
-.todo__list{
+.todo {
     margin: 1% 25% 0% 25%;
 }
 
-
-.select-check{
+.select-checkall {
     width: 5%;
     height: 20px;
 }
 
-
-.select-check__filter--white{
+.select-checkall__filter {
     width: 93%;
     height: 2rem;
     background-color: rgb(247, 247, 247);
     color: $bg-color;
     @include first;
-    
 }
 
-
-.list{
+.todo {
     margin-top: 1%;
 }
 
-.item{
+.todo__task {
     margin-top: 2vh;
     transition: all 1s ease;
     display: flex;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    &:hover{
-        input{
+    &:hover {
+        input {
             background-color: royalblue;
             opacity: 0.6;
             color: white;
@@ -115,12 +103,13 @@ form{
     }
 }
 
-.button__check{
+.task__check {
     width: 5%;
     height: 20px;
     @include first;
 }
-.item_input{
+
+.task__input {
     margin-left: 5%;
     width: 60%;
     background-color: rgb(247, 247, 247);
@@ -130,52 +119,56 @@ form{
     @include first;
 }
 
-
-.button__edit,.button__delete,.button__complate{
+.task__edit {
     margin-left: 2%;
     width: 5%;
     @include first;
-    
-}
-.button__complate{
-    margin-left: 10%;
-}
-.button--blue{
     background-color: white;
     color: blue;
-    &:hover{
+    &:hover {
         background-color: blue;
         color: white;
     }
 }
-.button--red{
+
+.task__delete {
+    margin-left: 2%;
+    width: 5%;
+    @include first;
     color: red;
     background-color: white;
-    &:hover{
+    &:hover {
         color: white;
         background-color: red;
     }
 }
-.button--green{
+
+.task__complate {
+    margin-left: 2%;
+    width: 5%;
+    @include first;
     background-color: white;
     color: green;
-    &:hover{
+    &:hover {
         background-color: green;
         color: white;
     }
 }
 
+.task__complate {
+    margin-left: 10%;
+}
 
-.complated{
+.todo__task--complated {
     text-decoration: line-through;
     color: red;
-    input{
+    input {
         background-color: lightgray;
-        color:white;
+        color: white;
     }
 }
 
-.fall{
+.fall {
     transform: translate(10rem) rotateY(20deg);
     opacity: 0%;
 }

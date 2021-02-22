@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <title>TODO_LIST</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="sass/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-  <body>
-    <div class="todo">
-      <div class="todo__nav--dark">
-        <nav><h1 class="todo__title">TODO LIST</h1></nav>
-      </div>
+<body>
+    <div class="nav">
+        <nav>
+            <h1 class="nav__title">TODO LIST</h1>
+        </nav>
+    </div>
 
-      <div class="todo__form">
+    <div class="form">
         <form>
-          <input id="inputbox" class="form__name--big" type="text" placeholder="Name"/>
-          <button id="insert" class="form__insert insert--royalblue"><i class="fa fa-plus"></i>ADD LIST</button>
-          <select name="todos" class="form__filter">
+            <input id="inputbox" class="form__name" type="text" placeholder="Name" />
+            <button id="insert" class="form__insert"><i class="fa fa-plus"></i>ADD LIST</button>
+            <select name="todos" class="form__filter">
             <option value="all">All</option>
             <option value="complated">Complated</option>
             <option value="uncomplated">Uncomplated</option>
           </select>
-        </form> 
-      </div>
+        </form>
+    </div>
 
-      <div class="todo__list">
-        <div class="list__select-check">
-          <input type="checkbox" class="select-check" id="input-checkbox" value="Select All"/>
-          <select name="todos" class="select-check__filter--white">
-            <option value="">Select-One</option>
-            <option value="delete">Delete</option>
-            <option value="completed">Completed</option>
-            <option value="uncomplated">Uncomplated</option>
-          </select>
+    <div class="todo">
+        <div class="todo__select-checkall">
+            <input type="checkbox" class="select-checkall" id="input-checkbox" value="Select All" />
+            <select name="todos" class="select-checkall__filter">
+              <option value="">Select-One</option>
+              <option value="delete">Delete</option>
+              <option value="completed">Completed</option>
+              <option value="uncomplated">Uncomplated</option>
+            </select>
         </div>
-        <div class="list"><ul class="todo-list"></ul></div>
-      </div>
-    </div>  
-    <script src="app.js"></script>
-  
-  </body>
+        <ul class="todo__all-task"></ul>
+    </div>
+
+</body>
+
+<script src="app.js"></script>
 
 </html>
