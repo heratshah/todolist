@@ -16,16 +16,21 @@ class item{
         input.classList.add('item_input');
         input.type = 'text';
 
-        //var index = tasks.length+1;
-        tasks.push({ "name": itemname });
-        //tasks.push({ "id":index,"name": itemname });
+        var index = tasks.length+1;
+        //tasks.push({ "name": itemname });
+        tasks.push({ "id":index,"name": itemname });
         this.setCookie('todolist', tasks,1);
 
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
 
+        let id = document.createElement('input');
+        id.value=(index);
+        id.classList.add('item_index');
+        id.hidden=true;
+
         let editButton = document.createElement('button');
-        editButton.innerHTML = '<i class="fa fa-edit"></i><div';
+        editButton.innerHTML = '<i class="fa fa-edit"></i>';
         editButton.classList.add('btn__edit');
         editButton.classList.add('btn__blue');
 
@@ -48,6 +53,7 @@ class item{
         itemBox.appendChild(comButton);
         itemBox.appendChild(editButton);
         itemBox.appendChild(deleteButton);
+        itemBox.appendChild(id);
               
         todolist.appendChild(itemBox);
 
@@ -58,8 +64,9 @@ class item{
 
     edit(item){
         if(item.classList[0] === "btn__edit"){
-            const itemBox =item.parentElement;
-            this.editcookies(itemBox);
+            const itemBox =item.parentElement;   
+            let itemindex=itemBox.childNodes[5].value; 
+            this.editcookies(itemBox,itemindex);
             location.reload();
 
         }
@@ -68,10 +75,10 @@ class item{
     remove(item){
         if(item.classList[0] === "btn__delete"){
             const itemBox =item.parentElement;
-            console.log(itemBox.childNodes);    
+            let itemindex=itemBox.childNodes[5].value;   
             let val=itemBox.childNodes[1].value;
             itemBox.classList.add('fall');
-            this.removecookies(val);
+            this.removecookies(val,itemindex);
             itemBox.addEventListener('transitionend', () => {
                 itemBox.remove();
                 location.reload();
@@ -152,27 +159,27 @@ class item{
     }
     
 
-    removecookies(itemname){
+    removecookies(itemname,itemindex){
         tasks = this.getCookie('todolist');
         tasks = JSON.parse(tasks);
         for (let index = 0; index < tasks.length; index++) {
-            if (tasks[index].name==itemname) {
+            if (tasks[index].name==itemname && tasks[index].id==itemindex) {
                 tasks.splice(index,1);
-                console.log(tasks);
+                //console.log(tasks);
                 this.setCookie('todolist', tasks,1);
             }   
         }
     }
 
-    editcookies(itemBox){
+    editcookies(itemBox,itemindex){
         let val=itemBox.childNodes[1].value;
         console.log(val);
         let user=prompt("Enter : ",val);
         tasks = this.getCookie('todolist');
         tasks = JSON.parse(tasks);
         for (let index = 0; index < tasks.length; index++) {
-            if (tasks[index].name==val) {
-                tasks.splice(index,1,{name:user});
+            if (tasks[index].name==val && tasks[index].id==itemindex) {
+                tasks.splice(index,1,{id:itemindex, name:user});
                 this.setCookie('todolist', tasks,1);
             }
             
@@ -182,8 +189,9 @@ class item{
     showCookie(cname) {
         tasks = this.getCookie('todolist');
         tasks = JSON.parse(tasks);
-        let index = 0;
-        while(index<tasks.length){
+        let index = tasks.length-1;
+        
+        while(index>=0){
             let input = document.createElement('input');
             input.value =(tasks[index].name);
             input.disabled = true;
@@ -193,6 +201,10 @@ class item{
             let itemBox = document.createElement('div');
             itemBox.classList.add('item');
         
+            let id = document.createElement('input');
+            id.value=(tasks[index].id);
+            id.classList.add('item_index');
+            id.hidden=true;
     
             let editButton = document.createElement('button');
             editButton.innerHTML = '<i class="fa fa-edit"></i>';
@@ -218,6 +230,7 @@ class item{
             itemBox.appendChild(comButton);
             itemBox.appendChild(editButton);
             itemBox.appendChild(deleteButton);
+            itemBox.appendChild(id);
                 
                 
             todolist.appendChild(itemBox);
@@ -230,7 +243,7 @@ class item{
             selectcheck__select.addEventListener('change', ()=> this.checked(selectcheck__select));
             inputcheckbox.addEventListener('click', ()=> this.SelectAll(inputcheckbox));
             
-            index++;
+            index--;
         }
     }
    
@@ -241,9 +254,10 @@ class item{
                 cmtbybox.forEach(item=>{
                     if(item.childNodes[0].checked){
                         let val=item.childNodes[1].value;
+                        let itemindex=item.childNodes[5].value;
                         item.classList.add("fall");
                         inputcheckbox.checked=false;
-                        this.removecookies(val);
+                        this.removecookies(val,itemindex);
                         item.addEventListener('transitionend',function(){
                         item.remove();
                         location.reload();
