@@ -1,9 +1,9 @@
-var button__add = document.querySelector('.button__add');
-var form__input = document.querySelector('.form__input');
+var form__insert = document.querySelector('.form__insert');
+var inputbox = document.getElementById('inputbox');
 const todolist = document.querySelector('.todo-list');
 const poplist = document.querySelector('.poplist');
-const form__select =document.querySelector('.form__select');
-const selectcheck__select =document.querySelector('.select-check__select');
+const form__filter =document.querySelector('.form__filter');
+const selectcheck =document.querySelector('.select-check');
 
 const inputcheckbox = document.getElementById('input-checkbox');
 var tasks=[];
@@ -31,22 +31,22 @@ class item{
 
         let editButton = document.createElement('button');
         editButton.innerHTML = '<i class="fa fa-edit"></i>';
-        editButton.classList.add('btn__edit');
-        editButton.classList.add('btn__blue');
+        editButton.classList.add('button__edit');
+        editButton.classList.add('button__blue');
 
         let deleteButton = document.createElement('button');
         deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
-        deleteButton.classList.add('btn__delete');
-        deleteButton.classList.add('btn--red');
+        deleteButton.classList.add('button__delete');
+        deleteButton.classList.add('button--red');
 
         let comButton = document.createElement('button');
         comButton.innerHTML = '<i class="fa fa-check"></i>';
-        comButton.classList.add('btn__complate');
-        comButton.classList.add('btn--green');
+        comButton.classList.add('button__complate');
+        comButton.classList.add('button--green');
 
         let checkboxButton = document.createElement('input');
         checkboxButton.setAttribute('type','checkbox');
-        checkboxButton.classList.add('btn__check');
+        checkboxButton.classList.add('button__check');
 
         itemBox.appendChild(checkboxButton);
         itemBox.appendChild(input);
@@ -63,7 +63,7 @@ class item{
 
 
     edit(item){
-        if(item.classList[0] === "btn__edit"){
+        if(item.classList[0] === "button__edit"){
             const itemBox =item.parentElement;   
             let itemindex=itemBox.childNodes[5].value; 
             this.editcookies(itemBox,itemindex);
@@ -73,7 +73,7 @@ class item{
     }
     
     remove(item){
-        if(item.classList[0] === "btn__delete"){
+        if(item.classList[0] === "button__delete"){
             const itemBox =item.parentElement;
             let itemindex=itemBox.childNodes[5].value;   
             let val=itemBox.childNodes[1].value;
@@ -89,7 +89,7 @@ class item{
     }
 
     complate(item){
-        if(item.classList[0] === "btn__complate"){
+        if(item.classList[0] === "button__complate"){
             const itemBox =item.parentElement;
             itemBox.classList.toggle('complated');
         }
@@ -208,22 +208,22 @@ class item{
     
             let editButton = document.createElement('button');
             editButton.innerHTML = '<i class="fa fa-edit"></i>';
-            editButton.classList.add('btn__edit');
-            editButton.classList.add('btn--blue');
+            editButton.classList.add('button__edit');
+            editButton.classList.add('button--blue');
         
             let deleteButton = document.createElement('button');
             deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
-            deleteButton.classList.add('btn__delete');
-            deleteButton.classList.add('btn--red');
+            deleteButton.classList.add('button__delete');
+            deleteButton.classList.add('button--red');
         
             let comButton = document.createElement('button');
             comButton.innerHTML = '<i class="fa fa-check"></i>';
-            comButton.classList.add('btn__complate');
-            comButton.classList.add('btn--green');
+            comButton.classList.add('button__complate');
+            comButton.classList.add('button--green');
                 
             let checkboxButton = document.createElement('input');
             checkboxButton.setAttribute('type','checkbox');
-            checkboxButton.classList.add('btn__check');
+            checkboxButton.classList.add('button__check');
                 
             itemBox.appendChild(checkboxButton);
             itemBox.appendChild(input);
@@ -238,9 +238,9 @@ class item{
             comButton.addEventListener('click', ()=> this.complate(comButton));
             editButton.addEventListener('click', ()=> this.edit(editButton));
             deleteButton.addEventListener('click', ()=> this.remove(deleteButton));
-            form__select.addEventListener('change',()=> this.filtertodo(event));
+            form__filter.addEventListener('change',()=> this.filtertodo(event));
             checkboxButton.addEventListener('click', ()=> this.checkselectAll(todolist));        
-            selectcheck__select.addEventListener('change', ()=> this.checked(selectcheck__select));
+            selectcheck.addEventListener('change', ()=> this.checked(selectcheck));
             inputcheckbox.addEventListener('click', ()=> this.SelectAll(inputcheckbox));
             
             index--;
@@ -263,7 +263,7 @@ class item{
                         location.reload();
                     });
                 }
-                selectcheck__select.value="";
+                selectcheck.value="";
             }, this);
             break;
             case 'completed':
@@ -280,7 +280,7 @@ class item{
                             inputcheckbox.checked=false;
                         }
                     }
-                    selectcheck__select.value="";
+                    selectcheck.value="";
                 });
             break;    
             case 'uncomplated':
@@ -297,7 +297,7 @@ class item{
                             inputcheckbox.checked=false;
                         }   
                     }
-                    selectcheck__select.value="";
+                    selectcheck.value="";
                 });
             break;
         }
@@ -346,16 +346,16 @@ class item{
 document.addEventListener("DOMContentLoaded", new item().init());
 document.addEventListener("DOMContentLoaded", new item().showCookie('todolist'));
 function check(event){
-    if(form__input.value === ""){
+    if(inputbox.value === ""){
         event.preventDefault();
         alert("Please enter your name ...");
     }
     else{
         event.preventDefault();
-        new item().createDiv(form__input.value);
+        new item().createDiv(inputbox.value);
         alert("Add done ...");
-        form__input.value = "";
+        inputbox.value = "";
     }
 }
 
-button__add.addEventListener('click', check);
+form__insert.addEventListener('click', check);

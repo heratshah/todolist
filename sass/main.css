@@ -5,17 +5,23 @@
           box-sizing: border-box;
 }
 
-.navbar--dark {
+.todo__nav {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo__nav--dark {
   background-color: #1b405a;
 }
 
-.navbar__title {
+.todo__title {
   margin: auto;
   color: white;
   font-family: serif;
 }
 
-.mainform {
+.todo__form {
   margin: 5% 20% 5% 20%;
 }
 
@@ -24,10 +30,9 @@ form {
   padding: 5% 5% 5% 5%;
 }
 
-.form__input {
+.form__name--big {
   width: 100%;
   text-align: center;
-  color: #343a40;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 0.5rem;
   border: none;
@@ -36,17 +41,17 @@ form {
   outline: none;
 }
 
-.form__input:focus {
+.form__name--big:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.form__input:focus {
+.form__name--big:focus {
   opacity: 0.6;
 }
 
-.button__add {
+.form__insert {
   width: 100%;
   margin-top: 1%;
   padding: 0.5rem;
@@ -59,22 +64,22 @@ form {
   outline: none;
 }
 
-.button__add:focus {
+.form__insert:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.button--royalblue {
+.insert--royalblue {
   background-color: royalblue;
   color: white;
 }
 
-.button--royalblue:hover {
+.insert--royalblue:hover {
   opacity: 0.8;
 }
 
-.form__select {
+.form__filter {
   margin-top: 2%;
   background: transparent;
   background-color: white;
@@ -88,44 +93,41 @@ form {
   outline: none;
 }
 
-.form__select:focus {
+.form__filter:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.form__select:hover {
+.form__filter:hover {
   color: #343a40;
   opacity: 0.5;
 }
 
-.maindiv {
+.todo__list {
   margin: 1% 25% 0% 25%;
 }
 
-.select-check__input {
+.select-check {
   width: 5%;
   height: 20px;
 }
 
-.select-check__select {
+.select-check__filter--white {
   width: 93%;
   height: 2rem;
+  background-color: #f7f7f7;
+  color: #343a40;
   border: none;
   font-size: auto;
   border-radius: 5rem;
   outline: none;
 }
 
-.select-check__select:focus {
+.select-check__filter--white:focus {
   border: none;
   outline: none;
   opacity: 0.7;
-}
-
-.select-check--white {
-  background-color: #f7f7f7;
-  color: #343a40;
 }
 
 .list {
@@ -158,7 +160,7 @@ form {
   opacity: 0.7;
 }
 
-.btn__check {
+.button__check {
   width: 5%;
   height: 20px;
   border: none;
@@ -167,7 +169,7 @@ form {
   outline: none;
 }
 
-.btn__check:focus {
+.button__check:focus {
   border: none;
   outline: none;
   opacity: 0.7;
@@ -192,7 +194,7 @@ form {
   opacity: 0.7;
 }
 
-.btn__edit, .btn__delete, .btn__complate {
+.button__edit, .button__delete, .button__complate {
   margin-left: 2%;
   width: 5%;
   border: none;
@@ -201,42 +203,42 @@ form {
   outline: none;
 }
 
-.btn__edit:focus, .btn__delete:focus, .btn__complate:focus {
+.button__edit:focus, .button__delete:focus, .button__complate:focus {
   border: none;
   outline: none;
   opacity: 0.7;
 }
 
-.btn__complate {
+.button__complate {
   margin-left: 10%;
 }
 
-.btn--blue {
+.button--blue {
   background-color: white;
   color: blue;
 }
 
-.btn--blue:hover {
+.button--blue:hover {
   background-color: blue;
   color: white;
 }
 
-.btn--red {
+.button--red {
   color: red;
   background-color: white;
 }
 
-.btn--red:hover {
+.button--red:hover {
   color: white;
   background-color: red;
 }
 
-.btn--green {
+.button--green {
   background-color: white;
   color: green;
 }
 
-.btn--green:hover {
+.button--green:hover {
   background-color: green;
   color: white;
 }

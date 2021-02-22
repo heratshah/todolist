@@ -7,30 +7,31 @@
     box-sizing: border-box;
 }
 
-.navbar--dark{
+.todo__nav{
+    align-items: center;
+}
+.todo__nav--dark{
     background-color: #1b405a;
 }
-.navbar__title{
+.todo__title{
     margin: auto;
     color:white;
     font-family: serif;
 }
 
-.mainform{
+.todo__form{
     margin: 5% 20% 5% 20%;
 }
-.body{
-}
+
 form{
     //background-color: #1b405a;
     background-image: url(/img/nav2.jpg);
     padding: 5% 5% 5% 5%;
 }
 
-.form__input{
+.form__name--big{
     width: 100%;
     text-align: center;
-    color: $bg-color;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 0.5rem;
     @include first;
@@ -39,7 +40,7 @@ form{
     }
 }
 
-.button__add{
+.form__insert{
     width: 100%;
     margin-top: 1%;
     padding: 0.5rem;
@@ -49,7 +50,7 @@ form{
     @include first;
 }
 
-.button--royalblue{
+.insert--royalblue{
     background-color: royalblue;
     color: white;
     &:hover{
@@ -58,7 +59,7 @@ form{
 }
 
 
-.form__select{
+.form__filter{
     margin-top: 2%;
     background: transparent;
     background-color: white;
@@ -74,28 +75,27 @@ form{
 }
 
 
-.maindiv{
+.todo__list{
     margin: 1% 25% 0% 25%;
 }
 
 
-.select-check__input{
+.select-check{
     width: 5%;
     height: 20px;
 }
 
 
-.select-check__select{
+.select-check__filter--white{
     width: 93%;
     height: 2rem;
+    background-color: rgb(247, 247, 247);
+    color: $bg-color;
     @include first;
     
 }
 
-.select-check--white{
-    background-color: rgb(247, 247, 247);
-    color: $bg-color;
-}
+
 .list{
     margin-top: 1%;
 }
@@ -108,14 +108,14 @@ form{
     &:hover{
         input{
             background-color: royalblue;
-            opacity: 0.6;   
+            opacity: 0.6;
             color: white;
             @include first;
         }
     }
 }
 
-.btn__check{
+.button__check{
     width: 5%;
     height: 20px;
     @include first;
@@ -131,16 +131,16 @@ form{
 }
 
 
-.btn__edit,.btn__delete,.btn__complate{
+.button__edit,.button__delete,.button__complate{
     margin-left: 2%;
     width: 5%;
     @include first;
     
 }
-.btn__complate{
+.button__complate{
     margin-left: 10%;
 }
-.btn--blue{
+.button--blue{
     background-color: white;
     color: blue;
     &:hover{
@@ -148,7 +148,7 @@ form{
         color: white;
     }
 }
-.btn--red{
+.button--red{
     color: red;
     background-color: white;
     &:hover{
@@ -156,7 +156,7 @@ form{
         background-color: red;
     }
 }
-.btn--green{
+.button--green{
     background-color: white;
     color: green;
     &:hover{
